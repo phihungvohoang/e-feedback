@@ -1,15 +1,15 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "wjZXc9dOUWbtgk2";
 $database = "feedback_db";
-if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
-    $url = "https://";
-else
-    $url = "http://";
-// Append the host(domain name, ip) to the URL.   
-$url .= $_SERVER['HTTP_HOST'];
-
+if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')   
+         $url = "https://";   
+    else  
+         $url = "http://";   
+    // Append the host(domain name, ip) to the URL.   
+    $url.= $_SERVER['HTTP_HOST'];   
+    
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);
 

@@ -1,15 +1,14 @@
 <?php
 session_start();
-
 // Check if the session variable 'completed' is set and not expired
 if (!isset($_SESSION['completed']) || (isset($_SESSION['expire_time']) && time() > $_SESSION['expire_time'])) {
-    // Redirect to cauhoi.php
-    header("Location: cauhoi.php");
+    // Redirect to checkpoint.php
+    header("Location: checkpoint.php");
     exit();
 }
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "wjZXc9dOUWbtgk2";
 $database = "feedback_db";
 
 // Create connection
@@ -90,6 +89,7 @@ $lang = $_SESSION['tsco_lang'];
 
 // Define titles and language strings based on the selected language
 if ($lang == 'vi') {
+    $home = "Trang chủ";
     $title = 'Hòm Thư Góp ý điện tử';
     $ngonNgu = "Ngôn Ngữ";
     $privacy = "Tất cả thông tin đều được bảo vệ tuyệt đối";
@@ -100,6 +100,7 @@ if ($lang == 'vi') {
     $contentPlaceholder = "Nhập nội dung...";
     $selectFile = "Chọn tệp";
 } else if ($lang == 'en') {
+    $home = "Home";
     $title = 'Suggestion Box';
     $ngonNgu = "Language";
     $privacy = "All information is absolutely protected";
@@ -110,6 +111,7 @@ if ($lang == 'vi') {
     $contentPlaceholder = "Import content...";
     $selectFile = "Select file";
 } else {
+    $home = "ホームページ";
     $title = '提案箱';
     $ngonNgu = "言語";
     $privacy = "すべての情報は絶対に保護されます";
@@ -126,11 +128,25 @@ if ($lang == 'vi') {
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />          
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="title" content="TSCOVN e-FeedBack">
+    <meta http-equiv="content-language" content="en" />
+    <meta name="language" content="English">
+    <meta name="Description" content="TSCOVN e-FeedBack Develop By IT Dept">
+    <meta name="author" content="Hung IT aka Hùng Đẹp Trai">
+    <meta name="Keywords" content="TSUCHIYA TSCO VIET NAM e-FeedBack, TSCOVN e-FeedBack" />
+    <meta property="og:image" content="./uploads/logo.png" />
+    <meta property="og:title" content="TSUCHIYA TSCO VIET NAM e-FeedBack"/> 
+    <meta property="og:description" content="TSUCHIYA TSCO VIET NAM e-FeedBack Develop By IT Dept" />
+    <title>TSCOVN | e-FeedBack</title>
+    <meta property="og:image" content="./uploads/6641c160bf0f6.png" />
+    <link href="https://fonts.cdnfonts.com/css/impact" rel="stylesheet">
+    <link rel="icon" href="./uploads/favicon.ico" type="image/png"> 
     <title>e-FeedBack</title>
     <!-- Bootstrap CSS -->
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <style>
         .cusTextArea {
             color: #fff;
@@ -144,7 +160,7 @@ if ($lang == 'vi') {
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-tscovn">
+    <nav class="navbar navbar-dark bg-primary">
         <a class="navbar-brand" href="#">TSCOVN</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -153,7 +169,7 @@ if ($lang == 'vi') {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="http://sotay.tscovn.com:5173">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="http://sotay.tscovn.com:5173"><?=$home?><span class="sr-only">(current)</span></a>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -169,11 +185,10 @@ if ($lang == 'vi') {
             </ul>
         </div>
     </nav>
-
     <div style="
-        background-image: url('./1.jpg');
+        background-image: url('1.webp');
         background-size: cover;
-        background-position:80%;
+        background-position: 80%;
         height: calc(100vh - 56px);
     ">
         <div class="container" style="padding-top:100px;">
@@ -210,9 +225,9 @@ if ($lang == 'vi') {
     </div>
 
     <!-- Bootstrap JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script>
         function displayFileName() {
             // Get the input element and its label
